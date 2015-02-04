@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="placebidservice">
+    <output-path>$PROJECT_DIR$/out/artifacts/placebidservice</output-path>
+    <root id="root">
+      <element id="directory" name="WEB_INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="PlaceBid" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="JAX-RS" />
+          <element id="file-copy" path="$USER_HOME$/Downloads/jeromq-0.2.0.jar" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
