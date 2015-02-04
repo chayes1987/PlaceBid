@@ -1,8 +1,8 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="placebidservice">
+  <artifact type="exploded-war" build-on-make="true" name="placebidservice">
     <output-path>$PROJECT_DIR$/out/artifacts/placebidservice</output-path>
     <root id="root">
-      <element id="directory" name="WEB_INF">
+      <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="PlaceBid" />
         </element>
