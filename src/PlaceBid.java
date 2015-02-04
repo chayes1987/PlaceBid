@@ -20,7 +20,8 @@ public class PlaceBid extends Application {
     @GET
     @Path("placebid/{id}/{email}")
     public boolean placeBid(@PathParam("id") String id, @PathParam("email") String email){
-        // TODO Implement method
-        return false;
+        String message = "BidPlaced <id>" + id + "</id> <params>" + email + "</params>";
+        publisher.send(message.getBytes());
+        return true;
     }
 }

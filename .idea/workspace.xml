@@ -32,8 +32,8 @@
       <file leaf-file-name="PlaceBid.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/PlaceBid.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.14847161" vertical-offset="0" max-vertical-offset="687">
-              <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.4206696" vertical-offset="0" max-vertical-offset="687">
+              <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -380,7 +380,8 @@
     <MESSAGE value="Added imports, annotated class as web service" />
     <MESSAGE value="Added method header for place bid. Annotated method as web method" />
     <MESSAGE value="Added JAR for 0mq integration, added imports to class and initialized context and publisher objects" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added JAR for 0mq integration, added imports to class and initialized context and publisher objects" />
+    <MESSAGE value="Added constants for the 0mq addresses. Bound the publisher to the address" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added constants for the 0mq addresses. Bound the publisher to the address" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -389,8 +390,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/PlaceBid.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14847161" vertical-offset="0" max-vertical-offset="687">
-          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.4206696" vertical-offset="0" max-vertical-offset="687">
+          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
