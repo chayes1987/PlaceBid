@@ -3,25 +3,23 @@ import org.jeromq.ZMQ.*;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Application;
 
-@ApplicationPath("/bidder")
-@Path("/services")
+@ApplicationPath(Constants.APPLICATION_PATH)
+@Path(Constants.PATH)
 public class PlaceBid extends Application {
     private Context context = ZMQ.context();
     private Socket publisher = context.socket(ZMQ.PUB);
-    private final String PUB_ADR = "tcp://127.0.0.1:1101", ACK_ADR = "tcp://127.0.0.1:1110";
 
     public static void main(String[] args) { new PlaceBid().subscribe(); }
 
     private void subscribe(){
-        publisher.bind(PUB_ADR);
+        publisher.bind(Constants.PUB_ADR);
         new Thread(() -> {
             Socket subscriber = context.socket(ZMQ.SUB);
-            subscriber.connect(ACK_ADR);
-            subscriber.subscribe("ACK: BidPlaced".getBytes());
+            subscriber.connect(Constants.ACK_ADR);
+            subscriber.subscribe(Constants.BID_PLACED_ACK_TOPIC.getBytes());
 
             while (true) {
-                String message = new String(subscriber.recv());
-                System.out.println(message);
+                System.out.println(new String(subscriber.recv()));
             }
         }).start();
     }
@@ -29,8 +27,8 @@ public class PlaceBid extends Application {
     @GET
     @Path("placebid/{id}/{email}")
     public boolean placeBid(@PathParam("id") String id, @PathParam("email") String email){
-        String message = "BidPlaced <id>" + id + "</id> <params>" + email + "</params>";
-        publisher.send(message.getBytes());
+        String bidPlacedEvt = "BidPlaced <id>" + id + "</id> <params>" + email + "</params>";
+        publisher.send(bidPlacedEvt.getBytes());
         return true;
     }
 }
