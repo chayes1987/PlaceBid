@@ -14,7 +14,16 @@ public class PlaceBid extends Application {
 
     private void subscribe(){
         publisher.bind(PUB_ADR);
-        // TODO Implement subscriber
+        new Thread(() -> {
+            Socket subscriber = context.socket(ZMQ.SUB);
+            subscriber.connect(ACK_ADR);
+            subscriber.subscribe("ACK: BidPlaced".getBytes());
+
+            while (true) {
+                String message = new String(subscriber.recv());
+                System.out.println(message);
+            }
+        }).start();
     }
 
     @GET
