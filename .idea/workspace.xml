@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="34ab75e9-6423-44e1-b29c-eb7cf7f161c2" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PlaceBid.iml" afterPath="$PROJECT_DIR$/PlaceBid.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PlaceBid.java" afterPath="$PROJECT_DIR$/src/PlaceBid.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -32,12 +33,12 @@
       <file leaf-file-name="PlaceBid.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/PlaceBid.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3216885" vertical-offset="0" max-vertical-offset="687">
-              <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.123726346" vertical-offset="0" max-vertical-offset="687">
+              <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#337#338#0" expanded="true" />
-                <element signature="e#365#366#0" expanded="true" />
+                <element signature="e#487#488#0" expanded="true" />
+                <element signature="e#515#516#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -132,9 +133,10 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/jeromq-0.2.0.jar!/" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -379,7 +381,8 @@
       <TodoPanelSettings />
     </option>
     <MESSAGE value="Added imports, annotated class as web service" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added imports, annotated class as web service" />
+    <MESSAGE value="Added method header for place bid. Annotated method as web method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added method header for place bid. Annotated method as web method" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -388,12 +391,12 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/PlaceBid.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3216885" vertical-offset="0" max-vertical-offset="687">
-          <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.123726346" vertical-offset="0" max-vertical-offset="687">
+          <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#337#338#0" expanded="true" />
-            <element signature="e#365#366#0" expanded="true" />
+            <element signature="e#487#488#0" expanded="true" />
+            <element signature="e#515#516#0" expanded="true" />
           </folding>
         </state>
       </provider>
