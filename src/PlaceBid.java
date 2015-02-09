@@ -17,26 +17,25 @@ public class PlaceBid extends Application {
     private Context context = ZMQ.context();
     private Socket publisher = context.socket(ZMQ.PUB);
 
-    public static void main(String[] args) { new PlaceBid().subscribe(); }
+    public static void main(String[] args) { new PlaceBid(); }
 
-    private void subscribe(){
-        publisher.bind(Constants.PUB_ADR);
-        new Thread(() -> {
-            Socket subscriber = context.socket(ZMQ.SUB);
-            subscriber.connect(Constants.ACK_ADR);
-            subscriber.subscribe(Constants.BID_PLACED_ACK_TOPIC.getBytes());
-
-            while (true) {
-                System.out.println(new String(subscriber.recv()));
-            }
-        }).start();
-    }
+    public PlaceBid(){ publisher.bind(Constants.PUB_ADR); }
 
     @GET
     @Path("placebid/{id}/{email}")
     public boolean placeBid(@PathParam("id") String id, @PathParam("email") String email){
+        Socket subscriber = context.socket(ZMQ.SUB);
+        subscriber.connect(Constants.ACK_ADR);
+        subscriber.subscribe(Constants.BID_PLACED_ACK_TOPIC.getBytes());
+
         String bidPlacedEvt = "BidPlaced <id>" + id + "</id> <params>" + email + "</params>";
         publisher.send(bidPlacedEvt.getBytes());
+        boolean subscribe = true;
+
+        while (subscribe) {
+            System.out.println(new String(subscriber.recv()));
+            subscribe = false;
+        }
         return true;
     }
 }
