@@ -7,6 +7,8 @@ import javax.ws.rs.core.Application;
     @author Conor Hayes
     URL for testing web service on localhost from browser:
         http://localhost:8080/placebidservice/bidder/services/placebid/1/ch1987@live.ie
+    URL for AWS Web Service:
+        http://54.171.120.118:8080/placebidservice/bidder/services/placebid/1/ch1987@live.ie
     Information researched for RESTful web service:
         http://www.mkyong.com/webservices/jax-rs/jax-rs-pathparam-example/
  */
