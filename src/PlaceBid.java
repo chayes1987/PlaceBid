@@ -18,27 +18,28 @@ import javax.ws.rs.core.Application;
 public class PlaceBid extends Application {
     private Context context = ZMQ.context();
     private Socket publisher = context.socket(ZMQ.PUB);
-
-    public static void main(String[] args) { new PlaceBid().subscribe(); }
-
-    private void subscribe(){
-        publisher.bind(Constants.PUB_ADR);
-        new Thread(() -> {
-            Socket subscriber = context.socket(ZMQ.SUB);
-            subscriber.connect(Constants.ACK_ADR);
-            subscriber.subscribe(Constants.BID_PLACED_ACK_TOPIC.getBytes());
-
-            while (true) {
-                System.out.println(new String(subscriber.recv()));
-            }
-        }).start();
-    }
+    private Socket subscriber = context.socket(ZMQ.SUB);
 
     @GET
     @Path("placebid/{id}/{email}")
     public boolean placeBid(@PathParam("id") String id, @PathParam("email") String email){
+        publisher.bind(Constants.PUB_ADR);
         String bidPlacedEvt = "BidPlaced <id>" + id + "</id> <params>" + email + "</params>";
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         publisher.send(bidPlacedEvt.getBytes());
+        subscriber.connect(Constants.ACK_ADR);
+        subscriber.subscribe(Constants.BID_PLACED_ACK_TOPIC.getBytes());
+        boolean listen = true;
+
+        while (listen) {
+            System.out.println(new String(subscriber.recv()));
+            listen = false;
+        }
         return true;
     }
 }
