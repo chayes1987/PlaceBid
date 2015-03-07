@@ -3,7 +3,8 @@ This is the place bid service for my FYP. It is a web service written in Java. I
 It is responsible for relaying bid requests from the clients to the main system.
 
 ## Project Setup
-Requires a server running on localhost:8080.
+Requires a server running on localhost:8080
+Install Java
 
 ## License
 None
