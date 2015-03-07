@@ -5,6 +5,10 @@ import javax.ws.rs.core.Application;
 
 /*
     @author Conor Hayes
+    The official documentation was consulted for the third party library 0mq used in this class
+    0mq pub -> https://github.com/zeromq/jeromq/blob/master/src/test/java/guide/pathopub.java
+    0mq sub -> https://github.com/zeromq/jeromq/blob/master/src/test/java/guide/pathosub.java
+    Config -> http://www.mkyong.com/java/java-properties-file-examples/
     URL for testing web service on localhost from browser:
         http://localhost:8080/placebidservice/bidder/services/placebid/1/ch1987@live.ie
     URL for AWS Web Service:
@@ -17,29 +21,22 @@ import javax.ws.rs.core.Application;
 @Path(Constants.PATH)
 public class PlaceBid extends Application {
     private Context context = ZMQ.context();
-    private Socket publisher = context.socket(ZMQ.PUB);
-    private Socket subscriber = context.socket(ZMQ.SUB);
+    private static Socket publisher;
 
     @GET
     @Path("placebid/{id}/{email}")
     public boolean placeBid(@PathParam("id") String id, @PathParam("email") String email){
-        publisher.bind(Constants.PUB_ADR);
-        String bidPlacedEvt = "BidPlaced <id>" + id + "</id> <params>" + email + "</params>";
-
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        if (publisher == null) {
+            publisher = context.socket(ZMQ.PUB);
+            publisher.bind(Constants.PUB_ADR);
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
+        String bidPlacedEvt = Constants.TOPIC + " <id>" + id + "</id> <params>" + email + "</params>";
         publisher.send(bidPlacedEvt.getBytes());
-        subscriber.connect(Constants.ACK_ADR);
-        subscriber.subscribe(Constants.BID_PLACED_ACK_TOPIC.getBytes());
-        boolean listen = true;
-
-        while (listen) {
-            System.out.println(new String(subscriber.recv()));
-            listen = false;
-        }
         return true;
     }
 }
