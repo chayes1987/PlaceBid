@@ -8,7 +8,7 @@ Requires a server running on localhost:8080.
 ## License
 None
 
-## Setting up StartAuction service on AWS
+## Setting up PlaceBid service on AWS
 - Created AWS EC2 Windows instance
 - Connected with RDP and .pem keyfile
 - Copied Service build to instance
