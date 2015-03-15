@@ -39,4 +39,8 @@ public class PlaceBid extends Application {
         publisher.send(bidPlacedEvt.getBytes());
         return true;
     }
+
+    @GET
+    @Path("checkservice/")
+    public boolean checkService(){ return true; }
 }
