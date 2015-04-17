@@ -7,7 +7,6 @@ import javax.ws.rs.core.Application;
     @author Conor Hayes
     The official documentation was consulted for the third party library 0mq used in this class
     0mq pub -> https://github.com/zeromq/jeromq/blob/master/src/test/java/guide/pathopub.java
-    0mq sub -> https://github.com/zeromq/jeromq/blob/master/src/test/java/guide/pathosub.java
     Config -> http://www.mkyong.com/java/java-properties-file-examples/
     URL for testing web service on localhost from browser:
         http://localhost:8080/placebidservice/bidder/services/placebid/1/ch1987@live.ie
@@ -20,15 +19,15 @@ import javax.ws.rs.core.Application;
 @ApplicationPath(Constants.APPLICATION_PATH)
 @Path(Constants.PATH)
 public class PlaceBid extends Application {
-    private Context context = ZMQ.context();
-    private static Socket publisher;
+    private Context _context = ZMQ.context();
+    private static Socket _publisher;
 
     @GET
     @Path("placebid/{id}/{email}")
     public boolean placeBid(@PathParam("id") String id, @PathParam("email") String email){
-        if (publisher == null) {
-            publisher = context.socket(ZMQ.PUB);
-            publisher.bind(Constants.PUB_ADR);
+        if (_publisher == null) {
+            _publisher = _context.socket(ZMQ.PUB);
+            _publisher.bind(Constants.PUB_ADR);
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
@@ -36,7 +35,7 @@ public class PlaceBid extends Application {
             }
         }
         String bidPlacedEvt = Constants.TOPIC + " <id>" + id + "</id> <params>" + email + "</params>";
-        publisher.send(bidPlacedEvt.getBytes());
+        _publisher.send(bidPlacedEvt.getBytes());
         return true;
     }
 
