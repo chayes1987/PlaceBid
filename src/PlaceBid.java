@@ -33,12 +33,12 @@ public class PlaceBid extends Application {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
-                return Response.status(501).build();
+                return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
             }
         }
         String bidPlacedEvt = Constants.TOPIC + " <id>" + id + "</id> <params>" + email + "</params>";
         _publisher.send(bidPlacedEvt.getBytes());
-        return Response.status(200).build();
+        return Response.status(Response.Status.OK).build();
     }
 
     @GET
