@@ -2,6 +2,7 @@ import org.jeromq.ZMQ;
 import org.jeromq.ZMQ.*;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Application;
+import javax.ws.rs.core.Response;
 
 /*
     @author Conor Hayes
@@ -24,7 +25,7 @@ public class PlaceBid extends Application {
 
     @GET
     @Path("placebid/{id}/{email}")
-    public boolean placeBid(@PathParam("id") String id, @PathParam("email") String email){
+    public Response placeBid(@PathParam("id") String id, @PathParam("email") String email){
         if (_publisher == null) {
             _publisher = _context.socket(ZMQ.PUB);
             _publisher.bind(Constants.PUB_ADR);
@@ -32,14 +33,15 @@ public class PlaceBid extends Application {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
+                return Response.status(501).build();
             }
         }
         String bidPlacedEvt = Constants.TOPIC + " <id>" + id + "</id> <params>" + email + "</params>";
         _publisher.send(bidPlacedEvt.getBytes());
-        return true;
+        return Response.status(200).build();
     }
 
     @GET
     @Path("checkservice/")
-    public boolean checkService(){ return true; }
+    public Response checkService(){ return Response.status(200).build(); }
 }
