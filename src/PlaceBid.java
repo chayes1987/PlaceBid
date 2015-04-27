@@ -62,35 +62,4 @@ public class PlaceBid extends Application {
     @GET
     @Path("checkservice/")
     public Response checkService(){ return Response.status(200).build(); }
-
-    /**
-     * Consumed by users to register for a particular auction
-     * @param id The ID of the auction
-     * @param email The email of the user
-     * @return This web method will not be implemented
-     */
-    @POST
-    @Path("registerForAuction/{id}/{email}")
-    public Response registerForAuction(@PathParam("id") String id, @PathParam("email") String email){
-        throw new UnsupportedOperationException("Not implemented as part of this project");
-    }
-
-    /**
-     * Consumed to create an auction
-     * @param email The email of the seller
-     * @param itemName The name of the item
-     * @param description The description of the item
-     * @param startTime The start time of the auction
-     * @param estimatedValue The estimated value of the item
-     * @param startingBid The starting bid of the item
-     * @return
-     */
-    @POST
-    @Path("createAuction/{email}/{itemName}/{description}/{startTime}/{estimatedValue}/{startingBid}")
-    public Response createAuction(@PathParam("email") String email, @PathParam("itemName") String itemName,
-                                  @PathParam("description") String description, @PathParam("startTime") Date startTime,
-                                  @PathParam("estimatedValue") double estimatedValue,
-                                  @PathParam("startingBid") double startingBid){
-        throw new UnsupportedOperationException("Not implemented as part of this project");
-    }
 }
