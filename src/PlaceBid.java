@@ -3,11 +3,6 @@ import org.jeromq.ZMQ.*;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.Response;
-import java.util.Date;
-
-/**
- * @author Conor Hayes
- */
 
 /*
     The official documentation was consulted for the third party library 0mq used in this class
@@ -20,7 +15,8 @@ import java.util.Date;
  */
 
 /**
- * This class is a RESTful web service which handles user/bidder requests
+ * @author Conor Hayes
+ * Place Bid
  */
 @ApplicationPath(Constants.APPLICATION_PATH)
 @Path(Constants.PATH)
