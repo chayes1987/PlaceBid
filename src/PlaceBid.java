@@ -1,13 +1,12 @@
-import org.jeromq.ZMQ;
-import org.jeromq.ZMQ.*;
+import broker.BrokerFacade;
+import broker.IBroker;
+import utils.Constants;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.Response;
 
 /*
-    The official documentation was consulted for the third party library 0mq used in this class
-    0mq pub -> https://github.com/zeromq/jeromq/blob/master/src/test/java/guide/pathopub.java
-    Config -> http://www.mkyong.com/java/java-properties-file-examples/
+    The official documentation was consulted for the third party libraries
     Coding Standards -> http://www.oracle.com/technetwork/java/codeconvtoc-136057.html
     URL for testing web service on localhost from browser -> http://localhost:8080/placebidservice/bidder/services/checkservice
     URL for AWS Web Service -> http://54.171.120.118:8080/placebidservice/bidder/services/checkservice
@@ -21,8 +20,7 @@ import javax.ws.rs.core.Response;
 @ApplicationPath(Constants.APPLICATION_PATH)
 @Path(Constants.PATH)
 public class PlaceBid extends Application {
-    private Context _context = ZMQ.context();
-    private static Socket _publisher;
+    private IBroker _broker;
 
     /**
      * Consumed by bidders to place a bid
@@ -33,21 +31,11 @@ public class PlaceBid extends Application {
     @GET
     @Path("placebid/{id}/{email}")
     public Response placeBid(@PathParam("id") String id, @PathParam("email") String email){
-        // Initialize the publisher, only done once
-        if (_publisher == null) {
-            _publisher = _context.socket(ZMQ.PUB);
-            _publisher.bind(Constants.PUB_ADR);
-            // Allow time for the publisher to bind to the address
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-                return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
-            }
+        if(_broker == null) {
+            _broker = BrokerFacade.getBroker();
         }
-        // Build and publish the BidPlaced event
         String bidPlacedEvt = Constants.TOPIC + " <id>" + id + "</id> <params>" + email + "</params>";
-        _publisher.send(bidPlacedEvt.getBytes());
+        _broker.publishBidPlacedEvt(bidPlacedEvt);
         return Response.status(Response.Status.OK).build();
     }
 
