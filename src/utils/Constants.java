@@ -1,6 +1,6 @@
 package utils;
 
-import broker.MESSAGE_BROKER;
+import broker.Message_Broker;
 
 /*
     Coding Standards -> http://www.oracle.com/technetwork/java/codeconvtoc-136057.html
@@ -15,5 +15,5 @@ public class Constants {
     public static final String PATH = "/services";
     public static final String PUB_ADR = "tcp://*:2900";
     public static final String TOPIC = "BidPlaced";
-    public static MESSAGE_BROKER BROKER = MESSAGE_BROKER.ZeroMq;
+    public static Message_Broker BROKER = Message_Broker.ZeroMq;
 }

@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="PlaceBid:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/PlaceBid_jar</output-path>
+    <root id="archive" name="PlaceBid.jar">
+      <element id="module-output" name="PlaceBid" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jaxrs-ri-2.13/jaxrs-ri/api/javax.ws.rs-api-2.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/jeromq-0.2.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

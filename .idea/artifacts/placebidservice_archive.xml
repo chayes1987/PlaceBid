@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="placebidservice_archive">
+    <output-path>$PROJECT_DIR$/out/artifacts/placebidservice_archive</output-path>
+    <root id="archive" name="placebidservice_archive.war">
+      <element id="artifact" artifact-name="placebidservice" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>
